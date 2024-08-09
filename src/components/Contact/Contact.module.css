@@ -1,0 +1,45 @@
+.contact_card {
+  display: flex;
+  gap: 20px;
+  border: 2px solid #ececec;
+    padding: 15px 25px;
+    border-radius: 8px;
+    max-width: 750px;
+    box-shadow: 4px 4px 8px rgb(0 203 255 / 50%);
+    align-items: center;
+}
+
+
+.contact_context {
+display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact_text {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.icons {
+  width: 18px;
+  height: 18px;
+}
+
+.btn {
+  font-size: 18px;
+  padding: 10px;
+  background-color: transparent;
+  color: #ececec;
+  border-radius: 8px;
+  border: 2px solid #ececec;
+  box-shadow: 4px 4px 8px rgb(0 203 255 / 50%);
+  transition: all 300ms ease-out;
+}
+
+.btn:hover {
+  background-color: #ececec80;
+  border: 2px solid #00cbff80;
+}
