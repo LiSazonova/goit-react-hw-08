@@ -1,7 +1,4 @@
 body {
-    /* display: flex;
-    justify-content: center; */
-
     background-color: #282828;
     color: #ececec;
 
@@ -30,4 +27,9 @@ ol {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

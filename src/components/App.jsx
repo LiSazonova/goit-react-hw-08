@@ -55,12 +55,12 @@ const App = () => {
           />
         </Routes>
       </Layout>
-      <h1 className={s.title}>Phonebook</h1>
+      {/* <h1 className={s.title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       {loading && <p>Loading contacts...</p>}
       {error && !loading && <p>{error}</p>}
-      <ContactList />
+      <ContactList /> */}
     </div>
   );
 };
