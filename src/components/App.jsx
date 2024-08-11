@@ -25,43 +25,38 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={s.wrapper}>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<RegistrationPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-            }
-          />
-        </Routes>
-      </Layout>
-      {/* <h1 className={s.title}>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && <p>Loading contacts...</p>}
-      {error && !loading && <p>{error}</p>}
-      <ContactList /> */}
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegistrationPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Routes>
+    </Layout>
+    // {/* <h1 className={s.title}>Phonebook</h1>
+    // <ContactForm />
+    // <SearchBox />
+    // {loading && <p>Loading contacts...</p>}
+    // {error && !loading && <p>{error}</p>}
+    // <ContactList /> */}
   );
 };
 
