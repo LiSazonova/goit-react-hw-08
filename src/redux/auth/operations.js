@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 axios.default.baseURL = 'https://connections-api.goit.global';
 
