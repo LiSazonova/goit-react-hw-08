@@ -1,14 +1,12 @@
 .wrapper {
     display: flex;
-    justify-content: center;
 }
 
 .form {
     display: flex;
-        flex-direction: column;
-        width: 350px;
-        margin-right: auto;
-
+    flex-direction: column;
+    width: 400px;
+    margin-right: auto;
 }
 
 .title {
@@ -16,34 +14,44 @@
 }
 
 .label {
-    color: #ececec;
-    font-size: 20px;
-    border-radius: 8px;
-    border-color: #ececec;
-    background-color: inherit;
-    padding: 8px;
+    display: block;
+    padding: 15px 20px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid rgb(226, 232, 240);
+    border-radius: 15px;
+    outline: none;
     transition: all 300ms ease-out;
 }
 
 .label:hover,
 .label:focus {
-    border-color: #eaffac;
+    border-color: #8DC9F1;
 }
 
 .btn {
-    font-size: 18px;
-        padding: 15px;
-        background-color: #eaffac;
-        color: black;
-        border-radius: 8px;
-        margin-top: 25px;
-        transition: all 300ms ease-out;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    padding: 14px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    background-color: #8DC9F1;
+    border: 1px solid #8DC9F1;
+    border-radius: 12px;
+    transition: all 300ms ease-out;
+    cursor: pointer;
+    margin-top: 25px;
 }
 
 .btn:hover {
-        background-color: transparent;
-    border: 2px solid #eaffac;
-    color: #eaffac;
+    background-color: transparent;
+    border: 1px solid #8DC9F1;
+    color: #8DC9F1;
 }
 
 .input_title {
@@ -58,4 +66,12 @@
     margin-top: 10px;
     font-size: 18px;
     color: #ef4040;
+}
+
+.text {
+    text-align: center;
+}
+
+.link {
+    color: #8DC9F1;
 }

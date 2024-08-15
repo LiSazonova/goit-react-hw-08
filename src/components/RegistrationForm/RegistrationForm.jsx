@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import s from './RegistrationForm.module.css';
 import { Field, Form, Formik } from 'formik';
+import { NavLink } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,12 @@ const RegistrationForm = () => {
           <button className={s.btn} type="submit">
             Sign up
           </button>
+          <span className={s.text}>
+            Already have an account?{' '}
+            <NavLink className={s.link} to="/login">
+              Sign in
+            </NavLink>
+          </span>
         </Form>
       </Formik>
     </div>

@@ -1,5 +1,5 @@
 .wrapper {
-    padding-top: 188px;
+    padding-top: 72px;
     padding-left: 24px;
     padding-right: 24px;
 
@@ -7,28 +7,21 @@
         content: '';
         position: absolute;
         top: 12px;
-        right: 12px;
+        left: 50%;
         z-index: -1;
         display: block;
-        width: 600px;
-        height: 600px;
+        width: calc(100% - 24px);
+        height: 400px;
         background-image: url(../../images/waves_bg.jpg);
         background-size: cover;
         background-position: center;
         border-radius: 15px;
+        transform: translateX(-50%);
     }
 }
 
 .title {
-    color: #8DC9F1;
-    font-weight: 500;
-    font-size: 24px;
-}
-
-.text {
-    max-width: 380px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #718096;
+    color: #021865;
+    text-align: center;
+    margin-bottom: 80px;
 }

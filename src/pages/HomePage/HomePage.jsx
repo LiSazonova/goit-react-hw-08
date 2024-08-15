@@ -3,12 +3,12 @@ import s from './HomePage.module.css';
 const HomePage = () => {
   return (
     <div className={s.wrapper}>
-      <h1 className={s.title}>
-        Welcome to your Phone Book{' '}
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
-      </h1>
+      <h1 className={s.title}>Welcome!</h1>
+      <p className={s.text}>
+        Discover a world of contacts at your fingertips with our intuitive
+        phonebook. Find businesses, services, and friends effortlessly. Simplify
+        your search today!
+      </p>
     </div>
   );
 };
