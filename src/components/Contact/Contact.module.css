@@ -1,12 +1,13 @@
 .contact_card {
   display: flex;
-  gap: 20px;
-  border: 2px solid #ececec;
-    padding: 15px 25px;
-    border-radius: 8px;
     max-width: 750px;
-    box-shadow: 4px 4px 8px rgb(0 203 255 / 50%);
     align-items: center;
+  gap: 20px;
+      padding: 28px 24px;
+      background-color: #ffffff;
+      border: 1px solid #8DC9F1;
+      border-radius: 15px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 7px 23px;
 }
 
 
@@ -29,17 +30,23 @@ display: flex;
 }
 
 .btn {
-  font-size: 18px;
-  padding: 10px;
-  background-color: transparent;
-  color: #ececec;
-  border-radius: 8px;
-  border: 2px solid #ececec;
-  box-shadow: 4px 4px 8px rgb(0 203 255 / 50%);
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  background-color: #8DC9F1;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
   transition: all 300ms ease-out;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #ececec80;
-  border: 2px solid #00cbff80;
+  background-color: transparent;
+  border: 1px solid #8DC9F1;
+  color: #8DC9F1;
 }

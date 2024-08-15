@@ -1,41 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { goitApi, setToken } from "../../config/goitApi";
 
-axios.defaults.baseURL = 'https://connections-api.goit.global';
-
-
-export const fetchContacts = createAsyncThunk(
-    'contacts/fetchAll',
-    async (_, thunkAPI) => {
-        try {
-            const response = await axios.get('/contacts');
-            return response.data;
-        } catch (err) {
-            return thunkAPI.rejectWithValue(err.message);
-        }
+export const fetchContacts = createAsyncThunk('contacts/fetchAll', async (_, thunkAPI) => {
+    try {
+        const { data } = await goitApi.get('contacts');
+        return data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
-);
+});
 
-export const addContact = createAsyncThunk(
-    'contacts/addContact',
-    async (contact, thunkAPI) => {
-        try {
-            const response = await axios.post('/contacts', contact);
-            return response.data;
-        } catch (err) {
-            return thunkAPI.rejectWithValue(err.message);
-        }
+export const addContact = createAsyncThunk('contacts/addContact', async (body, thunkAPI) => {
+    try {
+        const { data } = await goitApi.post('contacts', body);
+        setToken(data.token);
+        return data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
-)
+});
 
-export const deleteContact = createAsyncThunk(
-    'contacts/deleteContact',
-    async (contactId, thunkAPI) => {
-        try {
-            const response = await axios.delete(`/contacts/${contactId}`);
-            return response.data;
-        } catch (err) {
-            return thunkAPI.rejectWithValue(err.message);
-        }
+export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkAPI) => {
+    try {
+        await goitApi.delete(`contacts/${id}`);
+        return id;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
-)
+});
