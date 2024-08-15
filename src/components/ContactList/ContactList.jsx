@@ -12,15 +12,23 @@ const ContactList = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (error) {
     return <div>{error}</div>;
   }
 
   return (
     <ul className={s.contacts_list}>
-      {contacts.map(({ id, name, number }) => (
-        <Contact key={id} id={id} name={name} number={number} />
-      ))}
+      {contacts.length ? (
+        contacts.map(({ id, name, number }) => (
+          <Contact key={id} id={id} name={name} number={number} />
+        ))
+      ) : (
+        <h1>No contacts received!</h1>
+      )}
     </ul>
   );
 };

@@ -22,8 +22,8 @@ export const addContact = createAsyncThunk('contacts/addContact', async (body, t
 
 export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkAPI) => {
     try {
-        await goitApi.delete(`contacts/${id}`);
-        return id;
+        const { data } = await goitApi.delete(`contacts/${id}`);
+        return data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }

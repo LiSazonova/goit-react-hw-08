@@ -5,25 +5,12 @@ import HomePage from '../pages/HomePage/HomePage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
-import s from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectLoading } from '../redux/contacts/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from '../redux/contacts/operations';
 import Layout from './Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './ResctrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <Layout>
       <Routes>
