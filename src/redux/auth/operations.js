@@ -1,39 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { goitApi } from "../../config/goitApi";
 
-axios.default.baseURL = 'https://connections-api.goit.global';
-
-// Додайте у файл redux / auth / operations.js операції, 
-// оголошені за допомогою createAsyncThunk, для роботи з користувачем:
-
-// register - для реєстрації нового користувача.
-// Базовий тип екшену "auth/register".
-// Використовується у компоненті RegistrationForm на сторінці реєстрації.
-export const register = createAsyncThunk('auth/register', async (_, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
     try {
-        const response = await axios.post('/users/signup');
-        return response.data;
+        const { data } = await goitApi.post('/users/signup', credentials);
+        return data;
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
     }
 })
 
-// login - для логіну існуючого користувача.
-// Базовий тип екшену "auth/login".
-// Використовується у компоненті LoginForm на сторінці логіну.
-
-export const logIn = createAsyncThunk('auth/login', async (_, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
-        const response = await axios.post('/users/login');
-        return response.data;
+        const { data } = await goitApi.post('/users/login', credentials);
+        return data;
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message);
     }
 })
-
-// logout - для виходу з додатка.
-// Базовий тип екшену "auth/logout".
-// Використовується у компоненті UserMenu у шапці додатку.
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
@@ -43,10 +27,6 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
         return thunkAPI.rejectWithValue(err.message);
     }
 })
-
-// refreshUser - оновлення користувача за токеном.
-// Базовий тип екшену "auth/refresh".
-// Використовується у компоненті App під час його монтування.
 
 export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     try {

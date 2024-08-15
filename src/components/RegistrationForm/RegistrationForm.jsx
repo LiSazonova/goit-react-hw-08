@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import s from './RegistrationForm.module.css';
 import { Field, Form, Formik } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { register } from '../../redux/auth/operations';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -11,10 +12,12 @@ const RegistrationForm = () => {
     options.resetForm();
   };
 
+  const initialValues = { name: '', email: '', password: '' };
+
   return (
     <div className={s.wrapper}>
       <Formik
-        initialValues={{ name: '', email: '', password: '' }}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         autoComplete="off"
       >
@@ -25,15 +28,15 @@ const RegistrationForm = () => {
           <label className={s.input_title}>Email</label>
           <Field className={s.label} name="email" required />
           <label className={s.input_title}>Password</label>
-          <Field className={s.label} name="password" required />
+          <Field className={s.label} name="password" type="password" required />
           <button className={s.btn} type="submit">
             Sign up
           </button>
           <span className={s.text}>
             Already have an account?{' '}
-            <NavLink className={s.link} to="/login">
+            <Link className={s.link} to="/login">
               Sign in
-            </NavLink>
+            </Link>
           </span>
         </Form>
       </Formik>
