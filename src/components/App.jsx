@@ -1,14 +1,17 @@
-import ContactForm from './ContactForm/ContactForm';
-import SearchBox from './SearchBox/SearchBox';
-import ContactList from './ContactList/ContactList';
-import HomePage from '../pages/HomePage/HomePage';
-import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Layout from './Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './ResctrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { lazy } from 'react';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const RegistrationPage = lazy(() =>
+  import('../pages/RegistrationPage/RegistrationPage'),
+);
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+// const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
   return (
@@ -36,6 +39,7 @@ const App = () => {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
   );
