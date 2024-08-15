@@ -2,12 +2,13 @@ import { Field, Form, Formik } from 'formik';
 import s from './LoginForm.module.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logIn } from '../../redux/auth/operations';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, options) => {
-    dispatch(login(values));
+    dispatch(logIn(values));
     options.resetForm();
   };
 

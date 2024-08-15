@@ -1,11 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './RegistrationForm.module.css';
 import { Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { register } from '../../redux/auth/operations';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const onSubmit = (values, options) => {
     dispatch(register(values));
@@ -13,6 +16,10 @@ const RegistrationForm = () => {
   };
 
   const initialValues = { name: '', email: '', password: '' };
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className={s.wrapper}>
