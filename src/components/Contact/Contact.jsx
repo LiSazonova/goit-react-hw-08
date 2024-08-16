@@ -8,14 +8,15 @@ import { toast, Toaster } from 'react-hot-toast';
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = async () => {
-    try {
-      await dispatch(deleteContact(id));
-      toast.success(`Contact ${name} deleted successfully!`);
-    } catch (e) {
-      console.log(e.message);
-      toast.error('Failed to delete contact. Please try again.');
-    }
+  const handleDelete = () => {
+    dispatch(deleteContact(id))
+      .then(() => {
+        toast.success(`Contact ${name} deleted successfully!`);
+      })
+      .catch(error => {
+        console.log(error.message);
+        toast.error('Failed to delete contact. Please try again.');
+      });
   };
 
   return (

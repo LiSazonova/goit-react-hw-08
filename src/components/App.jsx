@@ -15,7 +15,7 @@ const RegistrationPage = lazy(() =>
   import('../pages/RegistrationPage/RegistrationPage'),
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
   const dispatch = useDispatch();

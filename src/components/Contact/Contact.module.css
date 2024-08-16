@@ -1,18 +1,17 @@
 .contact_card {
   display: flex;
-    max-width: 750px;
-    align-items: center;
+  max-width: 750px;
+  align-items: center;
   gap: 20px;
-      padding: 28px 24px;
-      background-color: #ffffff;
-      border: 1px solid #8DC9F1;
-      border-radius: 15px;
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 7px 23px;
+  padding: 28px 24px;
+  background-color: #ffffff;
+  border: 1px solid #8DC9F1;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 7px 23px;
 }
 
-
 .contact_context {
-display: flex;
+  display: flex;
   flex-direction: column;
   gap: 10px;
 }

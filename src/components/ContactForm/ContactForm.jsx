@@ -1,10 +1,11 @@
-import s from './ContactForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { addContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
+import * as Yup from 'yup';
+import s from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -14,16 +15,15 @@ const ContactForm = () => {
     number: '',
   };
 
-  const ContactFormSchema = Yup.object().shape({
+  const ContactFormSchema = Yup.object({
     name: Yup.string()
-      .min(3, 'Too Short! Please type min 3 symbols')
-      .max(50, 'Too Long! Must be up to 50 symbols')
-      .required('Required'),
+      .required('This field is required!')
+      .min(3, 'Too short!')
+      .max(50, 'Too long!'),
     number: Yup.string()
-      .min(3, 'Must be a valid phone number, min 3 symbols!')
-      .max(50, 'Too Long!')
-      .matches(/^\+?[1-9]\d{1,14}$/, 'Невірний формат номеру телефона')
-      .required('Required'),
+      .required('This field is required!')
+      .min(3, 'Too short!')
+      .max(50, 'Too long!'),
   });
 
   const nameFieldId = nanoid();

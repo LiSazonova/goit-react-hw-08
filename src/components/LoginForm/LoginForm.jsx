@@ -1,9 +1,10 @@
 import { Field, Form, Formik } from 'formik';
-import s from './LoginForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { logIn } from '../../redux/auth/operations';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import * as Yup from 'yup';
+import s from './LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,17 @@ const LoginForm = () => {
     password: '',
   };
 
+  const LoginFormSchema = Yup.object({
+    email: Yup.string()
+      .required('This field is required!')
+      .min(3, 'Too short!')
+      .max(50, 'Too long!'),
+    password: Yup.string()
+      .required('This field is required!')
+      .min(3, 'Too short!')
+      .max(50, 'Too long!'),
+  });
+
   if (isLoggedIn) {
     return <Navigate to="/" />;
   }
@@ -29,6 +41,7 @@ const LoginForm = () => {
         initialValues={initialValues}
         onSubmit={onSubmit}
         autoComplete="off"
+        validationSchema={LoginFormSchema}
       >
         <Form className={s.form}>
           <label className={s.input_title}>Email</label>
