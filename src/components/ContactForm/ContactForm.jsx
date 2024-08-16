@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { addContact } from '../../redux/contacts/operations';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -35,36 +36,49 @@ const ContactForm = () => {
         name: values.name,
         number: values.number,
       }),
-    );
-    actions.resetForm();
+    )
+      .then(() => {
+        toast.success('Contact added successfully!');
+        actions.resetForm();
+      })
+      .catch(() => {
+        toast.error('Failed to add contact. Please try again.');
+      });
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={ContactFormSchema}
-    >
-      <Form className={s.form}>
-        <label className={s.input_title} htmlFor={nameFieldId}>
-          Name
-        </label>
-        <Field className={s.label} type="text" name="name" />
-        <ErrorMessage className={s.input_error} name="name" component="span" />
-        <label className={s.input_title} htmlFor={phoneFieldId}>
-          Number
-        </label>
-        <Field className={s.label} type="tel" name="number" />
-        <ErrorMessage
-          className={s.input_error}
-          name="number"
-          component="span"
-        />
-        <button className={s.btn} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+    <>
+      <Toaster position="top-right" />
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={ContactFormSchema}
+      >
+        <Form className={s.form}>
+          <label className={s.input_title} htmlFor={nameFieldId}>
+            Name
+          </label>
+          <Field className={s.label} type="text" name="name" />
+          <ErrorMessage
+            className={s.input_error}
+            name="name"
+            component="span"
+          />
+          <label className={s.input_title} htmlFor={phoneFieldId}>
+            Number
+          </label>
+          <Field className={s.label} type="tel" name="number" />
+          <ErrorMessage
+            className={s.input_error}
+            name="number"
+            component="span"
+          />
+          <button className={s.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 

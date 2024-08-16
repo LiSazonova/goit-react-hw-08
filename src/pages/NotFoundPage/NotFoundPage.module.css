@@ -9,7 +9,7 @@
 }
 
 .link {
-margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: center;
@@ -27,7 +27,7 @@ margin-left: auto;
 
     &:hover {
         background-color: transparent;
-            border: 1px solid #8DC9F1;
-            color: #8DC9F1;
+        border: 1px solid #8DC9F1;
+        color: #8DC9F1;
     }
 }
