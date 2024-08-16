@@ -18,7 +18,7 @@ const RegistrationForm = () => {
   const initialValues = { name: '', email: '', password: '' };
 
   if (isLoggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/contacts" />;
   }
 
   return (

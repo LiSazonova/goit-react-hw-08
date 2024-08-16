@@ -30,11 +30,39 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-// export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-//     try {
-//         const { data } = await goitApi.get('/users/current');
-//         return data;
-//     } catch (err) {
-//         return thunkAPI.rejectWithValue(err.message);
+export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+    const savedToken = thunkAPI.getState().auth.token;
+    if (savedToken === null) {
+        return thunkAPI.rejectWithValue('Token is not exist!');
+    }
+    try {
+        setToken(savedToken);
+        const { data } = await goitApi.get('/users/current');
+        return data;
+    } catch (err) {
+        return thunkAPI.rejectWithValue(err.message);
+    }
+})
+
+// export const refreshUser = createAsyncThunk(
+//     "auth/refresh",
+//     async (_, thunkAPI) => {
+//         // Reading the token from the state via getState()
+//         const state = thunkAPI.getState();
+//         const persistedToken = state.auth.token;
+
+//         if (persistedToken === null) {
+//             // If there is no token, exit without performing any request
+//             return thunkAPI.rejectWithValue("Unable to fetch user");
+//         }
+
+//         try {
+//             // If there is a token, add it to the HTTP header and perform the request
+//             setAuthHeader(persistedToken);
+//             const res = await axios.get("/users/current");
+//             return res.data;
+//         } catch (error) {
+//             return thunkAPI.rejectWithValue(error.message);
+//         }
 //     }
-// })
+// );
