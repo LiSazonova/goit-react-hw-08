@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
 import { addContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
