@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './ResctrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import { lazy, useEffect } from 'react';
-import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 import { selectIsRefreshing } from '../redux/auth/selectors';
@@ -15,7 +14,7 @@ const RegistrationPage = lazy(() =>
   import('../pages/RegistrationPage/RegistrationPage'),
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
   const dispatch = useDispatch();
