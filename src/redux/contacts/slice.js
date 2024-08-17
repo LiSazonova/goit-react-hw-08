@@ -42,7 +42,12 @@ const contactsSlice = createSlice({
                     (item) => item.id !== action.payload.id
                 );
             })
-            .addCase(deleteContact.rejected, handleRejected);
+            .addCase(deleteContact.rejected, handleRejected)
+            .addCase(logOut.fulfilled, (state) => {
+                state.items = [];
+                state.error = null;
+                state.loading = false;
+            });
     },
 });
 
